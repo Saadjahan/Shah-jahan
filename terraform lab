@@ -1,0 +1,32 @@
+terraform {
+ required_providers {                                                                                                      aws = {
+ source  = "hashicorp/aws"
+ version = "~> 4.16   }                                     
+                                                                                }                                                                                                                                                                                                                                               required_version = ">= 1.2.0"                                                                                         }                                                                                                                                                                                                                                               provider "aws" {                                                                                                          region     = "us-east-1" 
+access_key = "AKIA2VL4WXZZK5QOATWD"     
+secret_key = "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" 
+} 
+locals {
+instance_name = "${terraform.workspace}-instance"   
+}  
+resource "aws_instance" "server_1" { 
+ ami      = "ami-0cff7528ff583bf9a"  
+ instance_type   = var.instance_type 
+ count           = var.instance_count 
+ key_name               = "khub" 
+ monitoring             = "false"
+ vpc_security_group_ids = ["sg-0655831ec0e8ecc20"] 
+ subnet_id              = "subnet-00f59ec6d52c187b2" 
+ tags = {
+  name = local.instance_name
+ }
+  }                                                                                                                                                                                                                                               data "aws_instance" "myaws_instance" {                                                                                     filter {                                                                                                                    name   = "tag:name"                                                                                                     values = ["local.instance_name"]                                                                                  }                                                                                                                             depends_on = [ "aws_instance.server_1"      }                                                 
+
+data "aws_instance" "myaws_instance" { 
+filter { 
+ name   = "tag:name"
+ values = ["local.instance_name"]
+  }
+ depends_on = [ "aws_instance.server_1" ]
+  }
+     } 
