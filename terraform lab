@@ -15,8 +15,8 @@ resource "aws_instance" "server_1" {
  count           = var.instance_count 
  key_name               = "khub" 
  monitoring             = "false"
- vpc_security_group_ids = ["sg-0655831ec0e8ecc20"] 
- subnet_id              = "subnet-00f59ec6d52c187b2" 
+ vpc_security_group_ids = ["-----"] 
+ subnet_id              = "-----------" 
  tags = {
   name = local.instance_name
  }
