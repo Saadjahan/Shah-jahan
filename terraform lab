@@ -3,8 +3,8 @@ terraform {
  source  = "hashicorp/aws"
  version = "~> 4.16   }                                     
                                                                                 }                                                                                                                                                                                                                                               required_version = ">= 1.2.0"                                                                                         }                                                                                                                                                                                                                                               provider "aws" {                                                                                                          region     = "us-east-1" 
-access_key = "AKIA2VL4WXZZK5QOATWD"     
-secret_key = "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" 
+access_key = "------------"     
+secret_key = "------------" 
 } 
 locals {
 instance_name = "${terraform.workspace}-instance"   
